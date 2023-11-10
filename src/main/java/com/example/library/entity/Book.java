@@ -27,5 +27,4 @@ public class Book {
     @Column(name = "date", nullable = false)
     private String date;
 
-
 }
