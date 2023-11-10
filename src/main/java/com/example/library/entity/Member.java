@@ -3,10 +3,11 @@ package com.example.library.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "member")
+@Table(name = "Member")
 public class Member {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long user_Id;
 
     @Column(name = "username", nullable = false)
     private String username;
@@ -14,12 +15,12 @@ public class Member {
     @Column(name = "gender", nullable = false)
     private String gender;
 
-    @Column(name = "socialId", nullable = false)
-    private String socialId;
-
-    @Column(name = "phoneNumber", nullable = false)
-    private String phoneNumber;
+    @Column(name = "phone_Number", nullable = false, unique = true)
+    private String phone_Number;
 
     @Column(name = "address", nullable = false)
     private String address;
+
+    @Column(name = "social_Number", nullable = false, unique = true)
+    private String social_Number;
 }
