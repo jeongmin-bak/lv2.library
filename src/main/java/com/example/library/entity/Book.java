@@ -1,16 +1,21 @@
 package com.example.library.entity;
 
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.example.library.dto.BookRequestDto;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "book")
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "BOOK")
 public class Book {
     @Id
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long book_Id;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -24,7 +29,15 @@ public class Book {
     @Column(name = "publisher", nullable = false)
     private String publisher;
 
-    @Column(name = "date", nullable = false)
-    private String date;
+    @Column(name = "created_At", nullable = false)
+    private String created_At;
+
+    public Book(BookRequestDto requestDto){
+        this.title = requestDto.getTitle();
+        this.author = requestDto.getAuthor();
+        this.language = requestDto.getLanguage();
+        this.publisher = requestDto.getPublisher();
+        this.created_At = requestDto.getCreated_At();
+    }
 
 }
