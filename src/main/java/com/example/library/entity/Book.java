@@ -24,5 +24,8 @@ public class Book {
     @Column(name = "publisher", nullable = false)
     private String publisher;
 
+    @Column(name = "date", nullable = false)
+    private String date;
+
 
 }
