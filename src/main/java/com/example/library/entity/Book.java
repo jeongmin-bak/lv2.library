@@ -15,7 +15,7 @@ import lombok.Setter;
 public class Book {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long book_Id;
+    private Long bookId;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -29,15 +29,15 @@ public class Book {
     @Column(name = "publisher", nullable = false)
     private String publisher;
 
-    @Column(name = "created_At", nullable = false)
-    private String created_At;
+    @Column(name = "createdAt", nullable = false)
+    private String createdAt;
 
     public Book(BookRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.author = requestDto.getAuthor();
         this.language = requestDto.getLanguage();
         this.publisher = requestDto.getPublisher();
-        this.created_At = requestDto.getCreated_At();
+        this.createdAt = requestDto.getCreatedAt();
     }
 
 }

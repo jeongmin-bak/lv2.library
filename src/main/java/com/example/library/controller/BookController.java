@@ -3,7 +3,9 @@ package com.example.library.controller;
 
 import com.example.library.dto.BookRequestDto;
 import com.example.library.dto.BookResponseDto;
+import com.example.library.entity.Loan;
 import com.example.library.service.BookService;
+import org.springframework.data.repository.query.Param;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,12 +26,15 @@ public class BookController {
     }
 
     //선택한 도서 정보 조회 기능
-    // 타이틀인데 책이 여러개 나오면..? List<BookResponseDto>? 로 받아야 되나
     @GetMapping("/book/{title}")
-    public List<?> findBook(@PathVariable String title){
+    public BookResponseDto findBook(@PathVariable String title){
         return bookService.findBook(title);
     }
 
+    @GetMapping("/loan")
+    public boolean checkLoan(@RequestParam String user_Id, @RequestParam String book_Id){
+        return bookService.checkLoanBook(user_Id, book_Id);
+    }
 
 
 }

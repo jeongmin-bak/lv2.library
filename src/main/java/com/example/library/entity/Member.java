@@ -2,6 +2,9 @@ package com.example.library.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "Member")
 public class Member {
@@ -23,4 +26,5 @@ public class Member {
 
     @Column(name = "social_Number", nullable = false, unique = true)
     private String social_Number;
+
 }

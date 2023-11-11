@@ -1,22 +1,35 @@
 package com.example.library.entity;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.sql.Timestamp;
 import java.time.LocalDate;
 
 @Entity
 @Table(name="Loan")
-public class Loan {
+@Getter
+@Setter
+public class Loan extends Timestamped{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loan_Id;
 
-    @Column(name = "return_Status", nullable = false)
-    private String return_Status;
-    @Column(name = "loan_Date", nullable = false)
-    private LocalDate loan_Date;
+    @Column(name = "book_Id")
+    private String bookId;
 
-    @Column(name = "return_Date", nullable = false)
-    private LocalDate return_Date;
+    @Column(name = "user_Id")
+    private String userId;
+
+    @Column(name = "return_Status")
+    private String returnStatus;
+
+    @Column(name = "loan_Date")
+    private LocalDate loanDate;
+
+    @Column(name = "return_Date")
+    private LocalDate returnDate;
+
+
 }

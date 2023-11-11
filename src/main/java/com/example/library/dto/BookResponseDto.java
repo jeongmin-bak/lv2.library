@@ -1,7 +1,9 @@
 package com.example.library.dto;
 
 import com.example.library.entity.Book;
+import lombok.Getter;
 
+@Getter
 public class BookResponseDto {
     private Long book_Id;
     private String title;
@@ -11,11 +13,11 @@ public class BookResponseDto {
     private String created_At;
 
     public BookResponseDto(Book book) {
-        this.book_Id = book.getBook_Id();
+        this.book_Id = book.getBookId();
         this.title = book.getTitle();
         this.author = book.getAuthor();
         this.language = book.getLanguage();
         this.publisher = book.getPublisher();
-        this.created_At = book.getCreated_At();
+        this.created_At = book.getCreatedAt();
     }
 }
