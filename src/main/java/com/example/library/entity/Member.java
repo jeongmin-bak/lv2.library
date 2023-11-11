@@ -7,6 +7,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Getter
 @Setter
@@ -39,4 +42,5 @@ public class Member {
         this.address = requestDto.getAddress();
         this.socialNumber = requestDto.getSocialNumber();
     }
+
 }

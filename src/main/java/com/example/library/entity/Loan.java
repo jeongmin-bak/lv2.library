@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
+
 import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -17,7 +18,9 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @Table(name="Loan")
-public class Loan {
+@Getter
+@Setter
+public class Loan extends Timestamped{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long loanId;

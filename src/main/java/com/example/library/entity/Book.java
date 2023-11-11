@@ -39,6 +39,7 @@ public class Book {
     @CreationTimestamp
     private LocalDateTime createdAt;
 
+
     public Book(BookRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.author = requestDto.getAuthor();
