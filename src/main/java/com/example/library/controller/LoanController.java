@@ -22,6 +22,11 @@ public class LoanController {
         return loanService.returnBook(bookId,requestDto);
     }
 
+    @GetMapping("/loan")
+    public boolean checkLoan(@RequestParam Long user_Id, @RequestParam Long book_Id){
+        return loanService.checkLoanBook(user_Id, book_Id);
+    }
+
     @GetMapping("/loan/{userId}")
     public List<LoanResponseDto> getLoans(@PathVariable Long userId){
         return loanService.getLoans(userId);
