@@ -2,10 +2,14 @@ package com.example.library.controller;
 
 import com.example.library.dto.LoanRequestDto;
 import com.example.library.dto.LoanResponseDto;
+import com.example.library.dto.getUserResponseDto;
+import com.example.library.entity.Loan;
 import com.example.library.service.LoanService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/library")
@@ -17,9 +21,9 @@ public class LoanController {
         this.loanService = loanService;
     }
 
-    @PutMapping("/return/{bookId}")
-    public Long returnBook(@PathVariable Long bookId, @RequestBody LoanRequestDto requestDto){
-        return loanService.returnBook(bookId,requestDto);
+    @GetMapping("/loan/{bookId}")
+    public Long returnBook(@PathVariable Long bookId){
+        return loanService.returnBook(bookId);
     }
 
     @GetMapping("/loan")
@@ -27,8 +31,8 @@ public class LoanController {
         return loanService.checkLoanBook(user_Id, book_Id);
     }
 
-    @GetMapping("/loan/{userId}")
-    public List<LoanResponseDto> getLoans(@PathVariable Long userId){
+    @GetMapping("/loan/user/{userId}")
+    public getUserResponseDto getLoans(@PathVariable Long userId){
         return loanService.getLoans(userId);
     }
 }

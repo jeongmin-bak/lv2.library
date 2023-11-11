@@ -6,6 +6,7 @@ import com.example.library.entity.Member;
 import lombok.Getter;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 public class LoanResponseDto {
@@ -13,15 +14,15 @@ public class LoanResponseDto {
 
     private String returnStatus;
 
-    private LocalDate loanDate;
+    private LocalDateTime loanDate;
 
-    private LocalDate returnDate;
+    private LocalDateTime returnDate;
 
     private Long bookId;
 
     private Long memberId;
 
-    public LoanResponseDto(Long loanId, String returnStatus, LocalDate loanDate, LocalDate returnDate) {
+    public LoanResponseDto(Long loanId, String returnStatus, LocalDateTime loanDate, LocalDateTime returnDate) {
         this.returnStatus = returnStatus;
     }
 

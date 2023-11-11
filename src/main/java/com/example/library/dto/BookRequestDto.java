@@ -5,6 +5,8 @@ import jakarta.persistence.Column;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 public class BookRequestDto {
@@ -12,7 +14,7 @@ public class BookRequestDto {
     private String author;
     private String language;
     private String publisher;
-    private String createdAt;
+    private LocalDateTime createdAt;
 
 
 }
