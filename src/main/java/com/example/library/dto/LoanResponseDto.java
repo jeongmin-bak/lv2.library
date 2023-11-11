@@ -1,19 +1,32 @@
 package com.example.library.dto;
 
+import com.example.library.entity.Book;
+import com.example.library.entity.Loan;
 import com.example.library.entity.Member;
 import lombok.Getter;
 
+import java.time.LocalDate;
+
 @Getter
 public class LoanResponseDto {
-    private String username;
-    private String gender;
-    private String phoneNumber;
-    private String address;
+    private Long loanId;
 
-    public LoanResponseDto(Member member) {
-        this.username = member.getUsername();
-        this.gender = member.getGender();
-        this.phoneNumber = member.getPhoneNumber();
-        this.address = member.getAddress();
+    private String returnStatus;
+
+    private LocalDate loanDate;
+
+    private LocalDate returnDate;
+
+    private Long bookId;
+
+    private Long memberId;
+
+    public LoanResponseDto(Long loanId, String returnStatus, LocalDate loanDate, LocalDate returnDate) {
+        this.returnStatus = returnStatus;
     }
+
+    public LoanResponseDto(Loan loan){
+
+    }
+
 }
