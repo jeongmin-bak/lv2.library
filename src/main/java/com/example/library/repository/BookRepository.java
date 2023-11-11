@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface BookRepository extends JpaRepository<Book, Long>{
 
-    List<Book> findAllByBook_Id();
-    List<Book> findAllByOrderByCreated_AtDesc();
+    Book findBookByTitle(String title);
+//    List<Book> findAllByOrderByCreated_AtDesc();
+
+    List<Book> findAllByOrderByCreatedAtAsc();
 }

@@ -9,6 +9,5 @@ public class BookRequestDto {
     private String author;
     private String language;
     private String publisher;
-    private String created_At;
 
 }

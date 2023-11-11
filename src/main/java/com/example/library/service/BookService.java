@@ -19,15 +19,15 @@ public class BookService {
     // 도서 등록 기능
     public BookResponseDto createBook(BookRequestDto requestDto) {
         Book book = new Book(requestDto);
-
-        Book saveBook = bookRepository.save(book);
-
-        BookResponseDto bookResponseDto = new BookResponseDto(book);
-        return bookResponseDto;
+        return new BookResponseDto(bookRepository.save(book));
     }
 
     // 선택한 도서 정보 조회 기능 - response 1개만
-    public List<?> findBook(String title){
-        return bookRepository.findAllByBook_Id().stream().map(BookResponseDto::new).toList();
+//    public Book findBook(String title){
+//        return bookRepository.findBookByTitle(title);
+//    }
+
+    public List<BookResponseDto> getBooks() {
+        return bookRepository.findAllByOrderByCreatedAtAsc().stream().map(BookResponseDto::new).toList();
     }
 }

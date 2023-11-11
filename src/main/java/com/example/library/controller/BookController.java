@@ -25,10 +25,13 @@ public class BookController {
 
     //선택한 도서 정보 조회 기능
     // 타이틀인데 책이 여러개 나오면..? List<BookResponseDto>? 로 받아야 되나
-    @GetMapping("/book/{title}")
-    public List<?> findBook(@PathVariable String title){
-        return bookService.findBook(title);
-    }
+//    @GetMapping("/book/{title}")
+//    public BookResponseDto findBook(@PathVariable String title){
+//        return bookService.findBook(title);
+//    }
+
+    @GetMapping("/books")
+    public List<BookResponseDto> getBooks() { return bookService.getBooks();}
 
 
 
