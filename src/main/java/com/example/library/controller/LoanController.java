@@ -1,9 +1,7 @@
 package com.example.library.controller;
 
-import com.example.library.dto.LoanRequestDto;
-import com.example.library.dto.LoanResponseDto;
-import com.example.library.dto.getUserResponseDto;
-import com.example.library.entity.Loan;
+import com.example.library.dto.LoanJoinDto;
+
 import com.example.library.service.LoanService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +30,7 @@ public class LoanController {
     }
 
     @GetMapping("/loan/user/{userId}")
-    public getUserResponseDto getLoans(@PathVariable Long userId){
+    public List<LoanJoinDto> getLoans(@PathVariable Long userId){
         return loanService.getLoans(userId);
     }
 }

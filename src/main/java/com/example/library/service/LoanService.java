@@ -1,25 +1,15 @@
 package com.example.library.service;
 
-import com.example.library.dto.BookResponseDto;
-import com.example.library.dto.LoanRequestDto;
-import com.example.library.dto.LoanResponseDto;
-import com.example.library.dto.getUserResponseDto;
-import com.example.library.entity.Book;
+import com.example.library.dto.LoanJoinDto;
 import com.example.library.entity.Loan;
-import com.example.library.entity.Member;
-import com.example.library.entity.Result;
 import com.example.library.repository.BookRepository;
 import com.example.library.repository.LoanRepository;
 import com.example.library.repository.MemberRepository;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import jakarta.persistence.EntityNotFoundException;
-import lombok.val;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Service
 public class LoanService {
@@ -50,18 +40,9 @@ public class LoanService {
         return bookId;
     }
 
-    public getUserResponseDto getLoans(Long id){
-
-        Optional<Loan> findUser = loanRepository.findLoanByUserId(id);
-        if(findUser.isEmpty()){
-            throw new NullPointerException("사용자의 대출내역이 없습니다.");
-        }
-        Optional<Member> member = memberRepository.findMemberByUserId(findUser.get().getUserId());
-        Optional<Book> book = bookRepository.findBookByBookId(findUser.get().getBookId());
-
-        return new getUserResponseDto(member, book, findUser);
-        //return null;
-
+    public List<LoanJoinDto> getLoans(Long id){
+        List<LoanJoinDto> loanJoin = loanRepository.loanJoin(id);
+        return loanJoin;
     }
 
     public boolean checkLoanBook(Long userId, Long bookId) {
@@ -85,11 +66,5 @@ public class LoanService {
         return false;
     }
 
-//    private Optional<Loan> findLoan(Long id){
-////        return loanRepository.findById(id).orElseThrow(() ->
-////                new IllegalArgumentException("대출이력이 존재하지 않습니다.")
-////        );
-//        return loanRepository.findLoanByBookId(id);
-//    }
 
 }
