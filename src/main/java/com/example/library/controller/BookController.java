@@ -37,10 +37,7 @@ public class BookController {
     public List<BookResponseDto> getBooks() { return bookService.getBooks();}
 
 
-    @GetMapping("/loan")
-    public boolean checkLoan(@RequestParam String user_Id, @RequestParam String book_Id){
-        return bookService.checkLoanBook(user_Id, book_Id);
-    }
+
 
 
 }

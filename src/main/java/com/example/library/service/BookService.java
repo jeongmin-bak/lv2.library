@@ -8,16 +8,15 @@ import com.example.library.repository.BookRepository;
 import com.example.library.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class BookService {
     private final BookRepository bookRepository;
-    private final LoanRepository loanRepository;
 
     public BookService(BookRepository bookRepository, LoanRepository loanRepository) {
         this.bookRepository = bookRepository;
-        this.loanRepository = loanRepository;
     }
 
     // 도서 등록 기능
@@ -32,28 +31,7 @@ public class BookService {
         return new BookResponseDto(book);
     }
 
-    public boolean checkLoanBook(String userId, String bookId) {
-        // 반납할 수 있는 책인지 확인
-        Optional<Loan> check = loanRepository.findLoanByBookIdAndUserId(bookId, userId);
-        if(check.isEmpty()){
-            // 회원의 패널티가 있는지 확인
-            // 회원의 대출 내역 기록
-            Loan loan = new Loan();
-            loan.setBookId(bookId);
-            loan.setUserId(userId);
-            loanRepository.save(loan);
-
-            return true;
-        }
-        if(check.get().getReturnStatus()=="반납"){
-            return true;
-        }
-        // 대출 성공 메시지
-        return false;
-
-
     public List<BookResponseDto> getBooks() {
         return bookRepository.findAllByOrderByCreatedAtAsc().stream().map(BookResponseDto::new).toList();
-
     }
 }
