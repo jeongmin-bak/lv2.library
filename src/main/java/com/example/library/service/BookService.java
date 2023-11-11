@@ -23,11 +23,10 @@ public class BookService {
     // 도서 등록 기능
     public BookResponseDto createBook(BookRequestDto requestDto) {
         Book book = new Book(requestDto);
-
         return new BookResponseDto(bookRepository.save(book));
     }
 
-    // 선택한 도서 정보 조회 기능 - response 1개만
+
     public BookResponseDto findBook(String title){
         Book book = bookRepository.findBookByTitle(title);
         return new BookResponseDto(book);
@@ -51,5 +50,10 @@ public class BookService {
         }
         // 대출 성공 메시지
         return false;
+
+
+    public List<BookResponseDto> getBooks() {
+        return bookRepository.findAllByOrderByCreatedAtAsc().stream().map(BookResponseDto::new).toList();
+
     }
 }

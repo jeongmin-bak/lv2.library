@@ -6,6 +6,11 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -29,15 +34,17 @@ public class Book {
     @Column(name = "publisher", nullable = false)
     private String publisher;
 
-    @Column(name = "createdAt", nullable = false)
-    private String createdAt;
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="created_at", unique = false, nullable = true, updatable = false)
+    @CreationTimestamp
+    private LocalDateTime createdAt;
+
 
     public Book(BookRequestDto requestDto){
         this.title = requestDto.getTitle();
         this.author = requestDto.getAuthor();
         this.language = requestDto.getLanguage();
         this.publisher = requestDto.getPublisher();
-        this.createdAt = requestDto.getCreatedAt();
     }
 
 }

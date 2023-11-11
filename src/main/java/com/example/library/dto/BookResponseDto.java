@@ -3,6 +3,9 @@ package com.example.library.dto;
 import com.example.library.entity.Book;
 import lombok.Getter;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 @Getter
 public class BookResponseDto {
     private Long book_Id;
@@ -10,7 +13,7 @@ public class BookResponseDto {
     private String author;
     private String language;
     private String publisher;
-    private String created_At;
+    private LocalDateTime createdAt;
 
     public BookResponseDto(Book book) {
         this.book_Id = book.getBookId();
@@ -18,6 +21,6 @@ public class BookResponseDto {
         this.author = book.getAuthor();
         this.language = book.getLanguage();
         this.publisher = book.getPublisher();
-        this.created_At = book.getCreatedAt();
+        this.createdAt = book.getCreatedAt();
     }
 }

@@ -14,12 +14,5 @@ public class BookRequestDto {
     private String publisher;
     private String createdAt;
 
-//    public BookRequestDto(Book book) {
-//        this.title = book.getTitle();
-//        this.author = book.getAuthor();
-//        this.language = book.getLanguage();
-//        this.publisher = book.getPublisher();
-//        this.createdAt = book.getCreatedAt();
-//    }
 
 }

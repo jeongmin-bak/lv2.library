@@ -26,10 +26,16 @@ public class BookController {
     }
 
     //선택한 도서 정보 조회 기능
+
     @GetMapping("/book/{title}")
     public BookResponseDto findBook(@PathVariable String title){
         return bookService.findBook(title);
     }
+
+
+    @GetMapping("/books")
+    public List<BookResponseDto> getBooks() { return bookService.getBooks();}
+
 
     @GetMapping("/loan")
     public boolean checkLoan(@RequestParam String user_Id, @RequestParam String book_Id){
