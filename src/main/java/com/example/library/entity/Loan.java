@@ -10,13 +10,21 @@ import java.time.LocalDate;
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long loan_Id;
+    private Long loanId;
 
-    @Column(name = "return_Status", nullable = false)
-    private String return_Status;
+    @Column(name = "return_Status", nullable = true)
+    private String returnStatus;
     @Column(name = "loan_Date", nullable = false)
-    private LocalDate loan_Date;
+    private LocalDate loanDate;
 
-    @Column(name = "return_Date", nullable = false)
-    private LocalDate return_Date;
+    @Column(name = "return_Date", nullable = true)
+    private LocalDate returnDate;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
