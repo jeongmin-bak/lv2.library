@@ -3,16 +3,19 @@ package com.example.library.service;
 import com.example.library.dto.BookRequestDto;
 import com.example.library.dto.BookResponseDto;
 import com.example.library.entity.Book;
+import com.example.library.entity.Loan;
 import com.example.library.repository.BookRepository;
+import com.example.library.repository.LoanRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
     private final BookRepository bookRepository;
 
-    public BookService(BookRepository bookRepository) {
+    public BookService(BookRepository bookRepository, LoanRepository loanRepository) {
         this.bookRepository = bookRepository;
     }
 
@@ -22,10 +25,11 @@ public class BookService {
         return new BookResponseDto(bookRepository.save(book));
     }
 
-    // 선택한 도서 정보 조회 기능 - response 1개만
-//    public Book findBook(String title){
-//        return bookRepository.findBookByTitle(title);
-//    }
+
+    public BookResponseDto findBook(String title){
+        Book book = bookRepository.findBookByTitle(title);
+        return new BookResponseDto(book);
+    }
 
     public List<BookResponseDto> getBooks() {
         return bookRepository.findAllByOrderByCreatedAtAsc().stream().map(BookResponseDto::new).toList();

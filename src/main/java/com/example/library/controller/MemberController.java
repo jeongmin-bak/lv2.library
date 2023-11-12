@@ -1,11 +1,10 @@
 package com.example.library.controller;
 
-import com.example.library.dto.BookRequestDto;
-import com.example.library.dto.BookResponseDto;
 import com.example.library.dto.MemberRequestDto;
 import com.example.library.dto.MemberResponseDto;
-import com.example.library.service.BookService;
 import com.example.library.service.MemberService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,9 +22,10 @@ public class MemberController {
     }
 
 
+    //도서관 회원 등록 기능
     @PostMapping("/create")
-    public MemberResponseDto createMember(@RequestBody MemberRequestDto requestDto){
-        return memberService.createMember(requestDto);
+    public ResponseEntity<MemberResponseDto> createMember(@RequestBody MemberRequestDto requestDto){
+        return new ResponseEntity<>(memberService.createMember(requestDto), HttpStatus.OK);
     }
 
 }

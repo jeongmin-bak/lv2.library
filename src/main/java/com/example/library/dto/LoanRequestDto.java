@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Getter
 public class LoanRequestDto {
@@ -14,9 +15,9 @@ public class LoanRequestDto {
 
     private String returnStatus;
 
-    private LocalDate loanDate;
+    private LocalDateTime loanDate;
 
-    private LocalDate returnDate;
+    private LocalDateTime returnDate;
 
     private Long bookId;
 
